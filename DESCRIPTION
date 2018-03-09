@@ -1,0 +1,19 @@
+Package: observR
+Type: Package
+Title: Automate Behavioral Experiement Recording with Webcam and WeMo
+Version: 0.1.0
+Author: Simon Garnier
+Maintainer: Simon Garnier <garnier@njit.edu>
+Description: TODO
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports:
+    Rvision (>= 0.3),
+    magicLamp (>= 0.1.0),
+    svDialogs,
+    progress
+Remotes: 
+    swarm-lab/Rvision,
+    swarm-lab/magicLamp
+RoxygenNote: 6.0.1
