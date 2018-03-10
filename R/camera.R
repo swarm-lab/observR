@@ -9,7 +9,9 @@ initCams <- function() {
     if (is.null(cam)) {
       searching <- FALSE
     } else {
-      pic <- Rvision::readNext(cam)
+      for (i in seq_len(10)) {
+        pic <- Rvision::readNext(cam)
+      }
       Rvision::display(pic)
       use <- svDialogs::dlgMessage("Do you want to use this camera?", "yesno")$res
       Rvision::destroyDisplay()
