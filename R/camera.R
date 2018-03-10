@@ -15,9 +15,9 @@ initCams <- function() {
       Rvision::display(pic)
       use <- svDialogs::dlgMessage("Do you want to use this camera?", "yesno")$res
       Rvision::destroyDisplay()
-      save_dir <- svDialogs::dlgDir(title = "Select folder to save images")$res
 
       if (use == "yes") {
+        save_dir <- svDialogs::dlgDir(title = "Select folder to save images")$res
         cams[[i + 1]] <- list(cam = cam, save_dir = save_dir)
         setCam(cams[[i + 1]])
         i <- i + 1
