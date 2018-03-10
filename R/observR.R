@@ -1,6 +1,6 @@
 #' @export
 observR <- function(wemo) {
-  initCam(cams)
+  cams <- initCams()
 
   ui <- svDialogs::dlgInput(message = "Duration of the experiment in seconds")
   duration <- as.numeric(gsub("[^0-9]", "", ui$res))
@@ -10,24 +10,23 @@ observR <- function(wemo) {
 
   times <- now() + seq(0, duration, interval) * 1000
 
-  pb <- progress::progress_bar$new(total = 100, format = "Progress [:bar] :percent")
+  pb <- progress::progress_bar$new(total = length(times), format = "Progress [:bar] :percent")
 
-  for (i in 1:length(times)) {
-    lightON(wemo)
+  for (i in seq_len(length(times))) {
+    magicLamp::wemo_ON(wemo)
     Sys.sleep(2)
 
-    grabPicture(cams)
+    grabPictures(cams)
 
-    print(paste0("Last picture taken at: ", Sys.time()))
+    pb$tick()
 
-    lightOFF(wemo)
+    magicLamp::wemo_OFF(wemo)
 
     if (i < length(times)) {
       Sys.sleep((times[i + 1] - now()) / 1000)
     }
-
-    pb$tick()
   }
 
+  releaseCams(cams)
   NULL
 }

@@ -8,10 +8,11 @@ Description: TODO
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Depends:
+    svDialogs
 Imports:
     Rvision (>= 0.3),
     magicLamp (>= 0.1.0),
-    svDialogs,
     progress
 Remotes: 
     swarm-lab/Rvision,
