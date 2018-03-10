@@ -20,8 +20,8 @@ initCams <- function() {
         save_dir <- svDialogs::dlgDir(title = "Select folder to save images")$res
         cams[[i + 1]] <- list(cam = cam, save_dir = save_dir)
         setCam(cams[[i + 1]])
-        i <- i + 1
       }
+      i <- i + 1
     }
   }
 
