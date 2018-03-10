@@ -9,7 +9,7 @@ initCams <- function() {
     if (is.null(cam)) {
       searching <- FALSE
     } else {
-      for (i in seq_len(10)) {
+      for (j in seq_len(10)) {
         pic <- Rvision::readNext(cam)
       }
       Rvision::display(pic)
