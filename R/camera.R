@@ -16,12 +16,12 @@ initCams <- function() {
       Rvision::destroyDisplay()
 
       if (use == "yes") {
-        save_dir <- svDialogs::dlgDir(title = "Select folder to save images")$res
-        cams[[i + 1]] <- list(cam = cam, save_dir = save_dir)
-        setCam(cams[[i + 1]])
+        save_dir <- normalizePath(svDialogs::dlgDir(title = "Select folder to save images")$res)
+        cams[[length(cams) + 1]] <- list(cam = cam, save_dir = save_dir)
+        setCam(cams[[length(cams)]])
       }
-      i <- i + 1
     }
+    i <- i + 1
   }
 
   cams
@@ -51,7 +51,7 @@ grabPictures <- function(cams, n = 30) {
     for (i in seq_len(n)) {
       pics[[i]] <- Rvision::readNext(cam$cam)
     }
-    file_name <- paste0(cam$save_dir, sprintf("%06d", length(dir(cam$save_dir))), ".png")
+    file_name <- paste0(cam$save_dir, "/", sprintf("%06d", length(dir(cam$save_dir))), ".png")
     suppressMessages(Rvision::write.Image(Rvision:::mean(pics), file_name))
   }, n = n)
 }

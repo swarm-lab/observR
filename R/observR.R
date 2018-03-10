@@ -1,6 +1,8 @@
 #' @export
 observR <- function(wemo) {
+  magicLamp::wemo_ON(wemo)
   cams <- initCams()
+  magicLamp::wemo_OFF(wemo)
 
   ui <- svDialogs::dlgInput(message = "Duration of the experiment in seconds")
   duration <- as.numeric(gsub("[^0-9]", "", ui$res))
